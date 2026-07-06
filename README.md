@@ -4,10 +4,14 @@
 
 **A [Claude Code](https://code.claude.com) skill that turns any conversation into a title you can actually find later.**
 
-[![Release](https://img.shields.io/badge/release-v1.0.0-2dcd7a)](https://github.com/Battlelamb/claude-code-conversation-titler/releases)
-&nbsp;[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-&nbsp;![Claude Code](https://img.shields.io/badge/Claude%20Code-skill%20%26%20plugin-8A2BE2)
-&nbsp;![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![Release](https://img.shields.io/badge/release-v1.1.0-2dcd7a?style=flat-square)](https://github.com/Battlelamb/claude-code-conversation-titler/releases)
+&nbsp;[![License](https://img.shields.io/badge/license-MIT-8b5cf6?style=flat-square)](LICENSE)
+&nbsp;[![Claude Code](https://img.shields.io/badge/Claude_Code-skill_%26_plugin-2dcd7a?style=flat-square)](https://code.claude.com)
+&nbsp;[![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b5cf6?style=flat-square)](#contributing)
+
+<br>
+
+<img src="assets/demo.gif" alt="titlewise demo - interactive conversation title generation" width="760">
 
 </div>
 
