@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; }
+  * { box-sizing: border-box; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+  .card {
+    width: 1280px; height: 640px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    color: #e6edf3; padding: 70px 72px;
+  }
+  .bar { position: absolute; top: 0; left: 0; right: 0; height: 10px;
+    background: linear-gradient(90deg, #2dcd7a 0%, #8b5cf6 100%); }
+  .pill { display: inline-block; padding: 9px 20px; border: 1px solid #30363d;
+    border-radius: 999px; color: #adbac7; font-size: 22px; letter-spacing: .3px; }
+  .brand { font-size: 118px; font-weight: 800; line-height: 1; margin: 30px 0 0;
+    background: linear-gradient(90deg, #2dcd7a 0%, #8b5cf6 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 33px; color: #adbac7; margin-top: 24px; max-width: 1040px; line-height: 1.35; }
+  .chips { position: absolute; left: 72px; bottom: 70px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+  .chip { display: inline-block; margin: 0 12px 0 0; padding: 11px 17px; border-radius: 10px; font-size: 20px; }
+  .g { background: #12351f; border: 1px solid #1f6b40; color: #7ee2b8; }
+  .p { background: #1e1b34; border: 1px solid #4c3f8a; color: #c4b5fd; }
+  .n { background: #161b22; border: 1px solid #30363d; color: #8b949e; }
+  .handle { position: absolute; right: 72px; top: 82px; color: #6e7681; font-size: 23px;
+    font-family: 'SFMono-Regular', Consolas, monospace; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bar"></div>
+  <div class="pill">Claude Code skill &amp; plugin</div>
+  <div class="brand">titlewise</div>
+  <div class="sub">Title, name &amp; label your Claude Code conversations - interactive, multi-variant &amp; multilingual.</div>
+  <div class="chips">
+    <span class="chip g">2025-03-14 - Payment API Debug: timeout fix + retries</span>
+    <span class="chip p">payments-service-timeout-fix</span>
+    <span class="chip n">payments · timeout · retry</span>
+  </div>
+  <div class="handle">github.com/Battlelamb</div>
+</div>
+</body>
+</html>
