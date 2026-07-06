@@ -14,6 +14,8 @@
 
 <img src="assets/demo.gif" alt="titlewise demo - interactive conversation title generation" width="760">
 
+<sub>**English** · [Türkçe](README.tr.md) · [中文](README.zh.md)</sub>
+
 </div>
 
 ---
