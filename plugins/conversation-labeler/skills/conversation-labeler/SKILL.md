@@ -1,11 +1,11 @@
 ---
 name: conversation-labeler
-description: Use when the user wants to name, title, or label the current conversation, or asks for a title suggestion. Triggers on phrases like baslik oner, konusmaya isim ver, sohbeti adlandir, bu konusmaya baslik, label this chat, name this conversation, or the command /conversation-labeler. Analyzes the current conversation, interactively asks (via AskUserQuestion) for language (user language, EN, or CHN), length, date, and style preferences unless already given, then produces the matching title variants in the chosen languages plus a description, tags, and a ready-to-paste /rename command. Suggestion only; does not modify the session.
+description: Use when the user wants to name, title, or label the current conversation, or asks for a title suggestion. Triggers on phrases like baslik oner, konusmaya isim ver, sohbeti adlandir, bu konusmaya baslik, label this chat, name this conversation, or the command /conversation-labeler. Analyzes the current conversation, interactively asks (via AskUserQuestion) for language (user language, EN, or CHN), length, date, and style preferences unless already given, then produces the matching title variants in the chosen languages plus a short description and tags. Suggestion only; it proposes titles you copy and apply yourself, and never modifies the session.
 ---
 
 # conversation-labeler
 
-Generate rich, well-formatted titles (plus a description and tags) for the CURRENT conversation, so it is easy to find later by date and topic. It is interactive: it asks the user how they want the title, then produces matching variants. Suggestion only - it never changes the session or its stored title.
+Generate rich, well-formatted titles (plus a description and tags) for the CURRENT conversation, so it is easy to find later by date and topic. It is interactive: it asks the user how they want the title, then produces matching variants. Suggestion only - it proposes titles and never changes the session or its stored title.
 
 ## When to use
 
@@ -13,7 +13,7 @@ Trigger when the user asks to name, title, or label the current conversation - f
 
 ## Why suggestion-only
 
-The conversation title is managed by the host app (e.g. Claude Code stores an `ai-title` record and regenerates it automatically). A skill cannot reliably set it, and editing the live transcript file is fragile (the app overwrites it and the file can corrupt). So this skill only GENERATES the naming and hands back a ready-to-paste `/rename` line; the user applies it in one step.
+The host app owns the conversation title (for example, Claude Code stores and regenerates it automatically). A skill cannot reliably set it, and editing the live transcript is fragile. So this skill only PROPOSES titles: you copy the one you like and set it as the conversation title yourself, using your client's rename/title option. The skill never edits the session, the transcript, or any file.
 
 ## Workflow
 
@@ -69,8 +69,8 @@ Write a 3-6 sentence summary paragraph (what was done, the outcome), in the sele
 ### 5. Tags
 Give comma-separated lowercase kebab tags: date + entities (tool, server/IP, people, database) + topics.
 
-### 6. Apply line
-Output a single copy-ready line for the recommended variant: `/rename <chosen title>`. Add a short note: if `/rename` is not available, paste the title via the session-history rename action in the UI. Do not edit any file to apply the title.
+### 6. Present the results
+Show the title variants as a clearly labeled, copy-ready list (grouped by category), followed by the description and the tags. End with a one-line note: copy the variant you like and set it as the conversation title using your client's rename/title option. Do not run or emit any command to apply the title, and do not edit any file.
 
 ## Generic example (illustrative only)
 
@@ -87,4 +87,4 @@ For a session that fixed a payment timeout bug:
 - Match the output language's proper characters; when Turkish, use ç, ğ, ı, ö, ş, ü.
 - Each title variant is one line, copy-ready.
 - Never invent details - use only what the conversation contains.
-- Suggestion only: never edit the transcript or the app's title store.
+- Suggestion only: never edit the transcript or the app's title store, and never emit a command to apply the title.
