@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" font-family="'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="titlewise - title, name and label your Claude Code conversations">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2dcd7a"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="340" fill="url(#bg)"/>
+  <rect width="1280" height="6" fill="url(#brand)"/>
+
+  <!-- tag mark -->
+  <g transform="translate(72,96)">
+    <rect x="0" y="0" width="96" height="96" rx="18" fill="#1f2937" stroke="#30363d" stroke-width="2"/>
+    <path d="M26 30 h26 a6 6 0 0 1 4.2 1.8 l18 18 a6 6 0 0 1 0 8.4 l-18 18 a6 6 0 0 1 -8.4 0 l-18 -18 a6 6 0 0 1 -1.8 -4.2 v-18 a6 6 0 0 1 6 -6 z" fill="none" stroke="url(#brand)" stroke-width="4"/>
+    <circle cx="38" cy="42" r="5" fill="url(#brand)"/>
+  </g>
+
+  <text x="200" y="140" font-size="76" font-weight="700" fill="url(#brand)">titlewise</text>
+  <text x="202" y="188" font-size="25" fill="#adbac7">Title, name &amp; label your Claude Code conversations - interactive &amp; multilingual</text>
+
+  <!-- example title chips (monospace) -->
+  <g font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="17">
+    <g transform="translate(72,232)">
+      <rect width="640" height="40" rx="8" fill="#12351f" stroke="#1f6b40"/>
+      <text x="16" y="26" fill="#7ee2b8">2025-03-14 - Payment API Debug: timeout fix + retries</text>
+    </g>
+    <g transform="translate(72,282)">
+      <rect width="420" height="40" rx="8" fill="#1e1b34" stroke="#4c3f8a"/>
+      <text x="16" y="26" fill="#c4b5fd">payments-service-timeout-fix-2025-03-14</text>
+    </g>
+    <g transform="translate(520,282)">
+      <rect width="380" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="16" y="26" fill="#8b949e">payments · timeout · retry · tests</text>
+    </g>
+  </g>
+</svg>

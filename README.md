@@ -1,10 +1,11 @@
 <div align="center">
 
-# 🏷️ titlewise
+<img src="assets/banner.svg" alt="titlewise - title, name and label your Claude Code conversations" width="100%">
 
-**Turn any Claude Code conversation into a title you can actually find later.**
+**A [Claude Code](https://code.claude.com) skill that turns any conversation into a title you can actually find later.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/badge/release-v1.0.0-2dcd7a)](https://github.com/Battlelamb/claude-code-conversation-titler/releases)
+&nbsp;[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 &nbsp;![Claude Code](https://img.shields.io/badge/Claude%20Code-skill%20%26%20plugin-8A2BE2)
 &nbsp;![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -14,7 +15,7 @@
 
 ## Overview
 
-**titlewise** is an interactive [Claude Code](https://code.claude.com) skill that reads your current conversation and proposes clean, well-structured **titles** - long or short, dated or not, in your own language, English, or Chinese - along with a short description and search tags. You pick the one you like and set it as the conversation title.
+**titlewise** is an interactive Claude Code skill that reads your current conversation and proposes clean, well-structured **titles** - long or short, dated or not, in your own language, English, or Chinese - along with a short description and search tags. You pick the one you like and set it as the conversation title.
 
 Think of it as a **conversation title generator** for Claude Code: name, title, or label any chat session in seconds, so past conversations are easy to find later.
 
@@ -26,21 +27,21 @@ It is **suggestion-only**: it proposes, you apply. It never touches your session
 |---|---|
 | 🎛️ **Interactive** | Asks how you want the title (language, length, date, style) before generating |
 | 🌍 **Multilingual** | Your conversation's language (auto-detected), English, or Chinese - pick one or several |
-| 📏 **Many variants** | Long / medium / short, dated / undated, slug, keyword, bracket, emoji, and more |
+| 📏 **13+ variants** | Long / medium / short, dated / undated, slug, keyword, bracket, month, outcome, emoji |
 | 📝 **More than a title** | Also returns a one-paragraph recap and search-friendly tags |
 | 🔒 **Safe by design** | Read-only; it proposes titles and never edits the session |
 | ⚡ **Zero config** | A single self-contained `SKILL.md`, no dependencies |
 
 ## The problem it solves
 
-Auto-generated conversation titles are generic (think *"Credential information request"*) and hard to scan weeks later. **titlewise** turns the actual work of the session into a title you would naturally search for - and gives you several formats to choose from.
+Auto-generated conversation titles are generic (think *"Credential information request"*) and hard to scan weeks later. **titlewise** turns the actual work of the session into a title you would naturally search for - and gives you a dozen formats to choose from.
 
 ## Installation
 
 ### As a plugin (recommended)
 
 ```text
-/plugin marketplace add Battlelamb/titlewise
+/plugin marketplace add Battlelamb/claude-code-conversation-titler
 /plugin install titlewise@titlewise
 ```
 
@@ -72,25 +73,62 @@ Or trigger it in natural language - *"name this chat"*, *"suggest a title"*, *"b
 
 ## Example
 
-For a session that fixed a payment timeout bug, you might get:
+A full run, end to end.
 
-**Long + dated**
-`2025-03-14 - Payment API Debug (payments-service): timeout fix + retry logic + integration tests`
+### 1. You invoke it
 
-**Short + dated**
-`2025-03-14 - payment timeout fix`
+```text
+/titlewise
+```
 
-**Slug**
-`payments-service-timeout-fix-2025-03-14`
+### 2. It asks how you want the title
 
-**Keyword**
-`payments-service · timeout · retry · integration-tests`
+One prompt, multi-select where it makes sense:
 
-**Description**
-> Fixed a request-timeout bug in the payments service by adding bounded retries with backoff, then covered the path with integration tests. The change is isolated to the client layer and ships behind the existing timeout config.
+| Question | Options |
+|---|---|
+| **Language** | Your language (auto) · English · Chinese |
+| **Length** | Long · Medium · Short |
+| **Date** | Prefix · Suffix · None · Month |
+| **Style** | Descriptive · Slug · Keyword · Outcome · Emoji |
 
-**Tags**
-`2025-03-14, payments-service, timeout, retry, integration-tests`
+### 3. It proposes variants
+
+Here, for a session that fixed a payment timeout bug:
+
+**Length x date**
+
+| Variant | Title |
+|---|---|
+| Long + dated | `2025-03-14 - Payment API Debug (payments-service): timeout fix + retry logic + integration tests` |
+| Long | `Payment API Debug (payments-service): timeout fix + retry logic + integration tests` |
+| Medium + dated | `2025-03-14 - Payment API Debug (payments-service): timeout fix + retries` |
+| Medium | `Payment API Debug (payments-service): timeout fix + retries` |
+| Short + dated | `2025-03-14 - payment timeout fix` |
+| Short | `payment timeout fix` |
+
+**Compact / search-friendly**
+
+| Variant | Title |
+|---|---|
+| Slug | `payments-service-timeout-fix-2025-03-14` |
+| Keyword | `payments-service · timeout · retry · integration-tests` |
+| Bracket | `[2025-03-14][payments-service] timeout fix + retry logic` |
+| Date suffix | `Payment API Debug (payments-service) - 2025-03-14` |
+| Month | `2025-03 - payments-service timeout fix` |
+
+**Style**
+
+| Variant | Title |
+|---|---|
+| Outcome-focused | `2025-03-14 - payments-service stabilized: timeout fix + retry logic` |
+| Emoji + short | `🐛 payments timeout fix (2025-03-14)` |
+
+### 4. Plus a description and tags
+
+> **Description** - Fixed a request-timeout bug in the payments service by adding bounded retries with exponential backoff, then covered the path with integration tests. The change is isolated to the client layer and ships behind the existing timeout config.
+>
+> **Tags** - `2025-03-14, payments-service, timeout, retry, backoff, integration-tests, bugfix`
 
 Copy the variant you like and set it as the conversation title.
 
