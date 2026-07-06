@@ -1,13 +1,14 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="titlewise - title, name and label your Claude Code conversations" width="100%">
+<img src="assets/banner.png" alt="titlewise - title, name and label your Claude Code conversations" width="100%">
 
 **A [Claude Code](https://code.claude.com) skill that turns any conversation into a title you can actually find later.**
 
-[![Release](https://img.shields.io/badge/release-v1.1.0-2dcd7a?style=flat-square)](https://github.com/Battlelamb/claude-code-conversation-titler/releases)
-&nbsp;[![License](https://img.shields.io/badge/license-MIT-8b5cf6?style=flat-square)](LICENSE)
-&nbsp;[![Claude Code](https://img.shields.io/badge/Claude_Code-skill_%26_plugin-2dcd7a?style=flat-square)](https://code.claude.com)
-&nbsp;[![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b5cf6?style=flat-square)](#contributing)
+[![Release](https://img.shields.io/github/v/release/Battlelamb/claude-code-conversation-titler?style=flat-square&color=2dcd7a&logo=github&label=release)](https://github.com/Battlelamb/claude-code-conversation-titler/releases)
+&nbsp;[![Stars](https://img.shields.io/github/stars/Battlelamb/claude-code-conversation-titler?style=flat-square&color=8b5cf6&logo=github)](https://github.com/Battlelamb/claude-code-conversation-titler/stargazers)
+&nbsp;[![License](https://img.shields.io/badge/license-MIT-22d3ee?style=flat-square)](LICENSE)
+&nbsp;[![Claude Code](https://img.shields.io/badge/Claude_Code-skill_%26_plugin-ec4899?style=flat-square)](https://code.claude.com)
+&nbsp;[![PRs welcome](https://img.shields.io/badge/PRs-welcome-2dcd7a?style=flat-square)](#contributing)
 
 <br>
 
