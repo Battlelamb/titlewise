@@ -90,14 +90,16 @@ A full run, end to end.
 
 ### 2. It asks how you want the title
 
-One prompt, multi-select where it makes sense:
+One prompt, every dimension multi-select:
 
 | Question | Options |
 |---|---|
 | **Language** | Your language (auto) · English · Chinese |
 | **Length** | Long · Medium · Short |
 | **Date** | Prefix · Suffix · None · Month |
-| **Style** | Descriptive · Slug · Keyword · Outcome · Emoji |
+| **Style** | Descriptive · Compact · Outcome · Emoji |
+
+**Compact** expands into three variants at once: slug, keyword, and bracket. Name one inline (`/titlewise slug`) to get just that one.
 
 ### 3. It proposes variants
 

@@ -23,14 +23,20 @@ Follow these steps in order when invoked.
 Read the current conversation from your context: main topic/project, tools, servers, people, databases, files, and what was actually done and decided. Use only what appears in the conversation - never invent details. If the conversation is empty, too short, or has no clear subject to title, say so and ask the user for a one-line hint instead of guessing.
 
 ### 2. Collect preferences (Q&A)
-If the user did NOT already state preferences in their invocation, ask them in ONE `AskUserQuestion` call with these four dimensions (enable multi-select where noted):
+If the user did NOT already state preferences in their invocation, ask them in ONE `AskUserQuestion` call with these four dimensions. All four are multi-select.
+
+`AskUserQuestion` accepts at most 4 questions, and at most 4 options per question. Each dimension below therefore offers exactly 4 options or fewer. Do not add a fifth option to any of them - the tool call will be rejected. The six catalogued styles stay reachable because **Compact** expands into three variants.
 
 - **Language** (multi-select): User language (the language of the conversation - auto-detect) / English (EN) / Chinese (CHN)
-- **Length**: Long / Medium / Short
+- **Length** (multi-select): Long / Medium / Short
 - **Date** (multi-select): Prefix (`YYYY-MM-DD - ...`) / Suffix (`... - YYYY-MM-DD`) / None / Month (`YYYY-MM`)
-- **Style** (multi-select): Descriptive (`+` joined) / Slug (kebab-case) / Keyword (middot `·`) / Bracket (`[date][tool]`) / Outcome-focused / Emoji
+- **Style** (multi-select):
+  - `Descriptive` (`+` joined)
+  - `Compact` - produces all three compact variants: Slug (kebab-case), Keyword (middot `·`), Bracket (`[date][tool]`)
+  - `Outcome-focused`
+  - `Emoji`
 
-If the user already specified preferences in the invocation (e.g. `/titlewise short english slug`), skip those questions and go straight to generation. If the user gives no answer or dismisses, default to: user language + all three lengths + date prefix + descriptive.
+If the user already specified preferences in the invocation (e.g. `/titlewise short english slug`), skip those questions and go straight to generation. A named compact style in the invocation (`slug`, `keyword`, or `bracket`) selects only that one variant, not the whole Compact group. If the user gives no answer or dismisses, default to: user language + all three lengths + date prefix + descriptive.
 
 ### 3. Generate the title variant(s)
 Produce the variant(s) that match the chosen dimensions, drawing from the catalog below. If multiple options were picked in a dimension, produce one variant per combination. Rules:
@@ -39,6 +45,8 @@ Produce the variant(s) that match the chosen dimensions, drawing from the catalo
 - Use today's date (from your context) as an absolute `YYYY-MM-DD`.
 - Produce each variant in each selected language. Match the target language's proper characters/diacritics; when the language is Turkish, use ç, ğ, ı, ö, ş, ü.
 - Never use an em dash - use a normal hyphen.
+
+**Cap the output at 12 variants per language.** Every dimension is multi-select, so a full cross-product can reach dozens of lines and stops being useful - the user has to scan them all to pick one. If the combinations exceed 12, keep the recommended pick plus the most distinct variants (one per style, then vary length, then vary date position), and end the list with a single line stating how many combinations were suppressed and which dimension to narrow to see them.
 
 Then pick ONE **recommended** variant: the best default among those produced for scanning a history list - prefer dated + medium length + descriptive in the user's language when those were selected, and keep it short enough to read at a glance (about 70 characters or fewer).
 
@@ -52,12 +60,12 @@ Then pick ONE **recommended** variant: the best default among those produced for
 - Short + dated: `YYYY-MM-DD - <3-6 word main topic>`
 - Short + undated: `<3-6 word main topic>`
 
-**B) Compact / search-friendly**
+**B) Compact / search-friendly** - the `Compact` style option produces the first three of these
 - Slug (kebab): `<tool>-<topic>-<topic>-YYYY-MM-DD` (filename-safe: only lowercase letters, digits, hyphens)
 - Keyword (middot): `<tool> · <topic1> · <topic2> · <topic3>`
 - Bracket tag: `[YYYY-MM-DD][<tool>] <topic1> + <topic2>`
-- Date suffix: `<Main Topic> (<tool>) - YYYY-MM-DD`
-- Month: `YYYY-MM - <tool> <main topic>`
+- Date suffix: `<Main Topic> (<tool>) - YYYY-MM-DD` (from the Date dimension, not the Style dimension)
+- Month: `YYYY-MM - <tool> <main topic>` (from the Date dimension)
 
 **C) Style**
 - Outcome-focused: `YYYY-MM-DD - <tool> <outcome>: <main-work1> + <main-work2>`
@@ -65,7 +73,7 @@ Then pick ONE **recommended** variant: the best default among those produced for
   feature ✨ · new/launch 🎉 · bugfix 🐛 · fix/patch 🔧 · refactor ♻️ · docs 📝 · perf ⚡ · security 🔒 ·
   release/ship 🚀 · config ⚙️ · tests ✅ · data/db 🗄️ · infra 🏗️ · design/ui 🎨 · research 🔎
 
-For more options, cross-product the dimensions: language x length x date-position x style. The Slug, Keyword, Bracket, and Month styles carry their own built-in date handling (or none); the Date dimension governs the descriptive (length) and outcome-focused variants.
+For more options, cross-product the dimensions: language x length x date-position x style, up to the 12-variant cap. The Slug, Keyword, Bracket, and Month styles carry their own built-in date handling (or none); the Date dimension governs the descriptive (length) and outcome-focused variants.
 
 ### 4. Description
 Write a 3-6 sentence summary paragraph (what was done, the outcome), in the selected language.
@@ -90,6 +98,8 @@ For a session that fixed a payment timeout bug:
 
 ## Rules
 
+- The Q&A is one `AskUserQuestion` call: at most 4 questions, at most 4 options each. Never add a fifth option to a dimension - reach new variants by expanding an existing option (as `Compact` does), not by adding one.
+- Cap the produced variants at 12 per language; state how many were suppressed rather than printing the full cross-product.
 - Never use an em dash; use a normal hyphen.
 - Match the output language's proper characters; when Turkish, use ç, ğ, ı, ö, ş, ü.
 - Each title variant is one line, copy-ready, with no trailing punctuation.

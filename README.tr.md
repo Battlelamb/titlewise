@@ -90,14 +90,16 @@ Uçtan uca tam bir çalışma.
 
 ### 2. Başlığı nasıl istediğini sorar
 
-Tek soru, uygun yerlerde çoklu seçim:
+Tek soru, her boyutta çoklu seçim:
 
 | Soru | Seçenekler |
 |---|---|
 | **Dil** | Kendi dilin (oto) · İngilizce · Çince |
 | **Uzunluk** | Uzun · Orta · Kısa |
 | **Tarih** | Önek · Sonek · Yok · Ay |
-| **Stil** | Açıklayıcı · Slug · Anahtar-kelime · Sonuç · Emoji |
+| **Stil** | Açıklayıcı · Kompakt · Sonuç · Emoji |
+
+**Kompakt** üç varyantı birden üretir: slug, anahtar-kelime ve köşeli parantez. Yalnızca birini istiyorsan adını yaz (`/titlewise slug`).
 
 ### 3. Varyantları önerir
 
